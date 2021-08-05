@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>">
 	<title>IMS</title>
+<style>
+	ul li a{
+		cursor: pointer;
+	}
+</style>
 </head>
 <body class="bg-light">
 	<div class="container-fluid">
@@ -19,22 +24,22 @@
 					</a>
 					<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 						<li class="nav-item mb-3 mt-3">
-							<a href="#" class="nav-link align-middle px-0 text-danger " id="home">
+							<a class="nav-link align-middle px-0 text-white " id="home">
 								<i class="fas fa-home"></i> <span class="ms-2 d-none d-sm-inline">Home</span>
 							</a>
 						</li>
 						<li class="nav-item mb-3">
-							<a href="#" class="nav-link align-middle px-0 text-white " id="dashboard">
+							<a class="nav-link align-middle px-0 text-white " id="dashboard">
 								<i class="fas fa-chart-pie"></i> <span class="ms-2 d-none d-sm-inline">Dashbord</span>
 							</a>
 						</li>
 						<li class="nav-item mb-3">
-							<a href="#" class="nav-link px-0 align-middle text-white " id="inventory">
+							<a class="nav-link px-0 align-middle text-white " id="inventory">
 								<i class="fas fa-list"></i> <span class="ms-2 d-none d-sm-inline">Inventory</span>
 							</a>
 						</li>
 						<li class="nav-item mb-3">
-							<a href="#" class="nav-link px-0 align-middle text-white itemss" id="itemList">
+							<a class="nav-link px-0 align-middle text-white " id="itemList">
 								<i class="fas fa-box-tissue"></i> <span class="ms-2 d-none d-sm-inline">Items</span>
 							</a>
 						</li>
@@ -79,7 +84,7 @@
 			<div class="col py-3">
 				<div class="container-lg" id="main">
 
-					<section id="homeSection">
+					<section id="homeSection" style="display:none;">
 						<div class="container-lg">
 							<div class="row d-flex align-items-center">
 								<div class="col-md-6">

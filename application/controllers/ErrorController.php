@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MainControllers extends CI_Controller {
+class ErrorController extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -26,15 +26,8 @@ class MainControllers extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('main');
-		// redirect("MainControllers","refresh");
-		// $this->load->view('error');
+        // $this->output->set_status_header('404');
+		$this->load->view('error');
 
 	}
-	public function main()
-	{
-		$this->load->view('main');
-
-	}
-
 }
