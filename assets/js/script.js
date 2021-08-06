@@ -5,7 +5,6 @@ const itemList = document.querySelector('#itemList');
 
 document.addEventListener("DOMContentLoaded", () => {
   toDo()
-
 });
 
 home.addEventListener('click', () => {
