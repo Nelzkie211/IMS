@@ -10834,4 +10834,7 @@ textarea.form-control-lg {
   }
 }
 
+ul li a{
+  cursor: pointer !important;
+}
 /*# sourceMappingURL=bootstrap.css.map */

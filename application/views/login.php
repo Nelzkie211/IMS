@@ -18,7 +18,7 @@
                     <div class="col-lg-4"></div>
                     <div class="col-lg-4">
                         <div class="contact-form">
-                            <form action="MainControllers" method="post">
+                            <form action="LoginControllers/login" method="post">
                                 <div class="row">
                                     <div class="col-md-2"></div>
                                     <div class="col-lg-10 mb-4 d-flex align-items-center">
@@ -28,19 +28,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 mb-4">
-                                        <input type="text" placeholder="Your Name" value="<?php echo set_value('username'); ?>" name="username" autofocus="" class="form-control form-control-lg fs-6 border-0 shadow-lg">
-                                        <?php echo form_error('username'); ?>
+                                        <input type="text" placeholder="Your Name" autocomplete="off" required name="username" autofocus="" class="form-control form-control-lg fs-6 border-0 shadow-lg">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 mb-4">
-                                        <input type="password" placeholder="Your Password" name="password" class="form-control form-control-lg fs-6 border-0 shadow-lg">
-                                        <?php echo form_error('password'); ?>
+                                        <input type="password" placeholder="Your Password" required name="password" class="form-control form-control-lg fs-6 border-0 shadow-lg">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12 mb-4">
+                                    <div class="col-lg-12 mb-4 d-flex align-items-center">
                                         <button type="submit" class="btn btn-danger px-3 shdaw-sm">Login</button>
+                                        <p class="text-danger mx-4 pt-3"><?php echo $this->session->flashdata('error'); ?></p>
                                     </div>
                                 </div>
                             </form>

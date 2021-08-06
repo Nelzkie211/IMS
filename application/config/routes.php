@@ -50,5 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'logincontrollers';
+$route['(:any)'] = "LoginControllers/$1";
+$route['(:any)'] = "MainControllers/$1";
+$route['MainControllers/(:any)'] = "MainControllers/main";
+// $route['LoginControllers/(:any)'] = "LoginControllers/login";
+// $route['LoginControllers/(:any)'] = "LoginControllers/logout";
 $route['404_override'] = 'ErrorController';
 $route['translate_uri_dashes'] = FALSE;

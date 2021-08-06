@@ -6,22 +6,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/png" href="<?php echo base_url('assets/img/imsIcon.ico');?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>">
 	<title>IMS</title>
-<style>
-	ul li a{
-		cursor: pointer;
-	}
-</style>
+
 </head>
 <body class="bg-light">
 	<div class="container-fluid">
 		<div class="row flex-nowrap">
 			<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
 				<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-					<a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-						<span class="fs-3 d-none text-danger d-sm-inline">IMS</span>
+					<a href="/" class="d-flex align-items-center py-2 ps-2 mb-md-0 me-md-auto text-decoration-none">
+						<span class="fs-3 d-none text-danger d-sm-inline"><i class="fas fa-home"></i>IMS</span>
 					</a>
+					<!-- <hr class="bg-white border-0 w-100"> -->
 					<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 						<li class="nav-item mb-3 mt-3">
 							<a class="nav-link align-middle px-0 text-white " id="home">
@@ -30,7 +27,7 @@
 						</li>
 						<li class="nav-item mb-3">
 							<a class="nav-link align-middle px-0 text-white " id="dashboard">
-								<i class="fas fa-chart-pie"></i> <span class="ms-2 d-none d-sm-inline">Dashbord</span>
+								<i class="fas fa-chart-pie"></i> <span class="ms-2 d-none d-sm-inline">Dashboard</span>
 							</a>
 						</li>
 						<li class="nav-item mb-3">
@@ -67,7 +64,7 @@
 							<path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
 						</svg> -->
 						<img src="<?php echo base_url('assets/img/profile.png');?>" height="30" width="30" alt="">
-							<span class="d-none d-sm-inline mx-3">Admin</span>
+							<span class="d-none d-sm-inline mx-3"><?php echo $this->session->userdata('u_name'); ?></span>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
 							<li><a class="dropdown-item" href="#">New project...</a></li>
@@ -76,7 +73,7 @@
 							<li>
 								<hr class="dropdown-divider">
 							</li>
-							<li><a class="dropdown-item" href="../IMS">Sign out</a></li>
+							<li><a class="dropdown-item" href="LoginControllers/logout">Sign out</a></li>
 						</ul>
 					</div>
 				</div>
@@ -100,15 +97,15 @@
 					</section>
 
 					<section id="dashboardSection" style="display:none;">
-						<h1>Dashboard Section</h1>
+						<h1 class="fs-2 fw-normal text-muted">Dashboards</h1>
 					</section>
 
 					<section id="inventorySection" style="display:none;">
-						<h1>Inventory Section</h1>
+						<h1 class="fs-2 fw-normal text-muted">Inventory </h1>
 					</section>
 
 					<section id="itemSection" style="display:none;">
-						<h1>Item Section</h1>
+						<h1 class="fs-2 fw-normal text-muted">Item </h1>
 						<div class="container-lg">
 							<div class="row">
 								<div>
@@ -176,6 +173,6 @@
 
 	<script src="<?php echo base_url("assets/js/bootstrap.bundle.min.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/jquery-3.6.0.min.js"); ?>"></script>
-	<script src="<?php echo site_url("assets/js/script.min.js"); ?>"></script>
+	<script src="<?php echo site_url("assets/js/script.js"); ?>"></script>
 </body>
 </html>

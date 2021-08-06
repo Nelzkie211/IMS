@@ -1,38 +1,39 @@
-const home = document.querySelector('#home');
-const dashboard = document.querySelector('#dashboard');
-const inventory = document.querySelector('#inventory');
-const itemList = document.querySelector('#itemList');
+const home = document.querySelector('#home')
+const dashboard = document.querySelector('#dashboard')
+const inventory = document.querySelector('#inventory')
+const itemList = document.querySelector('#itemList')
 
 document.addEventListener("DOMContentLoaded", () => {
   toDo()
 });
 
 home.addEventListener('click', () => {
-  window.localStorage.clear();
-  window.localStorage.setItem('nav', 'home');
-  window.localStorage.setItem('sect', 'homeSection');
-  toDo();
+  window.localStorage.clear()
+  window.localStorage.setItem('nav', 'home')
+  window.localStorage.setItem('sect', 'homeSection')
+  toDo()
 
 })
 dashboard.addEventListener('click', () => {
-  window.localStorage.clear();
-  window.localStorage.setItem('nav', 'dashboard');
-  window.localStorage.setItem('sect', 'dashboardSection');
-  toDo();
+  window.localStorage.clear()
+  window.localStorage.setItem('nav', 'dashboard')
+  window.localStorage.setItem('sect', 'dashboardSection')
+  toDo()
 
 })
 inventory.addEventListener('click', () => {
-  window.localStorage.clear();
-  window.localStorage.setItem('nav', 'inventory');
-  window.localStorage.setItem('sect', 'inventorySection');
-  toDo();
+  window.localStorage.clear()
+  window.localStorage.setItem('nav', 'inventory')
+  window.localStorage.setItem('sect', 'inventorySection')
+  toDo()
 })
 
 itemList.addEventListener('click', () => {
-  window.localStorage.clear();
-  window.localStorage.setItem('nav', 'itemList');
-  window.localStorage.setItem('sect', 'itemSection');
-  toDo();
+  window.localStorage.clear()
+  window.localStorage.setItem('nav', 'itemList')
+  window.localStorage.setItem('sect', 'itemSection')
+  toDo()
+
 
 })
 
