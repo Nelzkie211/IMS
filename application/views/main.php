@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/png" href="<?php echo base_url('assets/img/imsIcon.ico');?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("assets/dt/datatables.min.css"); ?>">
 	<title>IMS</title>
 
 </head>
@@ -15,8 +16,8 @@
 		<div class="row flex-nowrap">
 			<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
 				<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-					<a href="/" class="d-flex align-items-center py-2 ps-2 mb-md-0 me-md-auto text-decoration-none">
-						<span class="fs-3 d-none text-danger d-sm-inline"><i class="fas fa-home"></i>IMS</span>
+					<a class="d-flex align-items-center py-2 ps-2 mb-md-0 me-md-auto text-decoration-none">
+						<span class="fs-3 d-none text-danger d-sm-inline">IMS</span>
 					</a>
 					<!-- <hr class="bg-white border-0 w-100"> -->
 					<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
@@ -85,7 +86,20 @@
 						<div class="container-lg">
 							<div class="row d-flex align-items-center">
 								<div class="col-md-6">
-									<img src="<?php echo base_url('assets/img/home.png');?>" alt="home-img" class="img-fluid">
+									<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+											<img src="<?php echo base_url('assets/img/home.png');?>" class="d-block w-100 img-fluid" alt="...">
+											</div>
+											<div class="carousel-item">
+											<img src="<?php echo base_url('assets/img/home1.png');?>" class="d-block w-100 img-fluid" alt="...">
+											</div>
+											<div class="carousel-item">
+											<img src="<?php echo base_url('assets/img/home2.png');?>" class="d-block w-100 img-fluid" alt="...">
+											</div>
+										</div>
+									</div>
+									<!-- <img src="<?php echo base_url('assets/img/home.png');?>" alt="home-img" class="img-fluid"> -->
 								</div>
 								<div class="col-md-6">
 									<h1 class="spacing-1"><span class="text-danger fs-1 fw-bold">I</span>nventory</h1>
@@ -105,16 +119,31 @@
 					</section>
 
 					<section id="itemSection" style="display:none;">
-						<h1 class="fs-2 fw-normal text-muted">Item </h1>
+						<!-- <h1 class="fs-2 fw-normal text-muted">Item </h1> -->
 						<div class="container-lg">
-							<div class="row">
-								<div>
-									<button class="btn btn-success btn-sm float-end"> <i class="fas fa-plus mx-1"></i> Add Item</button>
+							<div class="row p-0 m-0">
+								<div class="col-md-7 p-0">
+									<div class="input-group input-group-sm itemClass1">
+										<span class="input-group-text" id="description">Description :</span>
+										<input type="hidden" readonly id="itemId">
+										<input type="text" class="form-control" id="desc" maxlength="65" aria-label="desc" aria-describedby="description">
+									</div>
+								</div>
+								<div class="col-md-3 p-0 m-0 px-2">
+									<div class="input-group input-group-sm itemClass2">
+										<span class="input-group-text" id="unit">Unit :</span>
+										<input type="text" class="form-control" id="units" maxlength="10" aria-label="units" aria-describedby="unit">
+										<button class="btn btn-success bg-gradient btn-sm" id="insertItem">Insert</button>
+									</div>
+								</div>
+								<div class="col-md-2 p-0 m-0">
+									<button class="btn btn-success btn-sm float-end bg-gradient" id="addItem"> <i class="fas fa-plus mx-1"></i> Add Item</button>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col shadow-sm bg-white mt-3">
-									<table class="table">
+								<div class=" shadow-sm bg-white mt-1 pt-2 pb-2 border-0">
+									<!-- <div class="table-responsive"> -->
+									<table class="table table-hover table-striped w-100 table-sm" id="itemTable">
 										<thead>
 											<tr>
 											<th scope="col">Item no.</th>
@@ -124,55 +153,41 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
+											<!-- <tr>
 											<th scope="row">1</th>
 											<td>pcs</td>
 											<td>asdas asd asd asd asd</td>
-											<td><button class="btn btn-primary btn-sm mx-1">Edit</button><button class="btn btn-danger btn-sm">delete</button></td>
+											<td><button class="btn btn-primary btn-sm mx-1"><i class="fas fa-pen"></i></button><button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td>
 											</tr>
-											<tr>
-											<th scope="row">2</th>
-											<td>pcs</td>
-											<td>asdas asd asd asd asd</td>
-											<td><button class="btn btn-primary btn-sm mx-1">Edit</button><button class="btn btn-danger btn-sm">delete</button></td>
-											</tr>
-											<tr>
-											<th scope="row">3</th>
-											<td>pcs</td>
-											<td>asdas asd asd asd asd</td>
-											<td><button class="btn btn-primary btn-sm mx-1">Edit</button><button class="btn btn-danger btn-sm">delete</button></td>
-											</tr>
-											<tr>
-											<th scope="row">4</th>
-											<td>pcs</td>
-											<td>asdas asd asd asd asdasdasdasdasd asd asd asd </td>
-											<td><button class="btn btn-primary btn-sm mx-1">Edit</button><button class="btn btn-danger btn-sm">delete</button></td>
-											</tr>
-											<tr>
-											<th scope="row">5</th>
-											<td>pcs</td>
-											<td>asdas asd asd asd asd</td>
-											<td><button class="btn btn-primary btn-sm mx-1">Edit</button><button class="btn btn-danger btn-sm">delete</button></td>
-											</tr>
-											<tr>
-											<th scope="row">6</th>
-											<td>pcs</td>
-											<td>asdas asd asd asd asd</td>
-											<td><button class="btn btn-primary btn-sm mx-1">Edit</button><button class="btn btn-danger btn-sm">delete</button></td>
-											</tr>
+											-->
 										</tbody>
 									</table>
+									<!-- </div> -->
 								</div>
 							</div>
 						</div>
 					</section>
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<!-- <div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div> -->
+								<div class="modal-body">
+									<i class="fas fa-check-circle text-success bg-gradient"></i> <span class="text-success" id="alertSpan"></span>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<script src="<?php echo base_url("assets/js/bootstrap.bundle.min.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/jquery-3.6.0.min.js"); ?>"></script>
-	<script src="<?php echo site_url("assets/js/script.js"); ?>"></script>
+	<script src="<?php echo base_url("assets/dt/datatables.min.js"); ?>"></script>
+	<script src="<?php echo base_url("assets/js/bootstrap.bundle.min.js"); ?>"></script>
+	<script src="<?php echo base_url("assets/js/script.min.js"); ?>"></script>
 </body>
 </html>

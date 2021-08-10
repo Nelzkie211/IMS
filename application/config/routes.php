@@ -53,6 +53,9 @@ $route['default_controller'] = 'logincontrollers';
 $route['(:any)'] = "LoginControllers/$1";
 $route['(:any)'] = "MainControllers/$1";
 $route['MainControllers/(:any)'] = "MainControllers/main";
+// $route['MainControllers/(:any)'] = "MainControllers/addItem";
+// $route['MainControllers/(:any)'] = "MainControllers/getItem";
+
 // $route['LoginControllers/(:any)'] = "LoginControllers/login";
 // $route['LoginControllers/(:any)'] = "LoginControllers/logout";
 $route['404_override'] = 'ErrorController';

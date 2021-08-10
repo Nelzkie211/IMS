@@ -22,15 +22,12 @@ class MainControllers extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-
-
+		$this->load->database();
+		$this->load->model('itemModel');
 	}
 	public function index()
 	{
 		redirect("/MainControllers/main");
-		// $this->load->view('main');
-		// redirect("MainControllers","refresh");
-		// $this->load->view('error');
 
 	}
 	public function main()
@@ -39,39 +36,83 @@ class MainControllers extends CI_Controller {
 		$logged_in = $this->session->userdata('logged_in');
 		if($logged_in != TRUE || empty($logged_in))
 		{
-			#user not logged in
-			// $this->load->view('login');
+
 			redirect('../IMS');
 
 		}
 		else
 		{
-			// redirect('/main');
 
 			$this->load->view('main');
-			#user Logged in
-			// $this->load->view("viewname",$data);
+
 		}
-		// // $this->load->view('login');
-		// $this->load->view('main');
 	}
-	public function home()
+
+	// ------------------------item--------------------------------------------
+	public function addItem()
 	{
-		$data = array();
-		$data['respond'] = '<div class="container-lg">
-		<div class="row d-flex align-items-center">
-			<div class="col-md-6">
-			</div>
-			<div class="col-md-6">
-				<h1 class="spacing-1"><span class="text-danger fs-1 fw-bold">I</span>nventory</h1>
-				<h1><span class="text-danger fs-1 fw-bold">M</span>anagement</h1>
-				<h1><span class="text-danger fs-1 fw-bold">S</span>ystem</h1>
-			</div>
-		</div>
-	</div>;';
+		if($this->input->post('itemId') !== '' ){
+			$data = array(
+				'i_desc' => $this->input->post('desc'),
+				'i_unit' => $this->input->post('units'),
+
+			);
+
+			$this->db->where('i_id',$this->input->post('itemId'));
+			$this->db->update('tbl_items',$data);
+
+			$result = ($this->db->affected_rows() != 1) ? false : true;
+			echo json_encode($result);
+
+		}else{
+			$data = array(
+				'i_desc' => $this->input->post('desc'),
+				'i_unit' => $this->input->post('units'),
+
+			);
+
+			$this->db->insert('tbl_items',$data);
+
+			$result = ($this->db->affected_rows() != 1) ? false : true;
+			echo json_encode($result);
+		}
 
 
-		echo json_encode($data);
 	}
+	public function delItem(){
+
+
+		$this->db->where('i_id',$this->input->post('itemId'));
+		$this->db->delete('tbl_items');
+
+		$result = ($this->db->affected_rows() != 1) ? false : true;
+		echo json_encode($result);
+	}
+
+	public function getItem()
+	{
+		$list = $this->itemModel->get_datatables();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $customers) {
+            $no++;
+            $row = array();
+            $row[] = $customers->i_id;
+            $row[] = $customers->i_unit;
+            $row[] = $customers->i_desc;
+            $row[] = '<button class="btn btn-outline-primary itemEditClass bg-gradient btn-sm me-3 rounded-pill" data-id="'.$customers->i_id.'" data-unit="'.$customers->i_unit.'" data-desc="'.$customers->i_desc.'"><i class="fas fa-pen"></i></button><button class="btn btn-outline-danger itemDeleteClass bg-gradient btn-sm rounded-pill" data-id="'.$customers->i_id.'"><i class="fas fa-trash"></i></button>';
+
+            $data[] = $row;
+        }
+
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->itemModel->count_all(),
+                        "recordsFiltered" => $this->itemModel->count_filtered(),
+                        "data" => $data,
+                );
+        echo json_encode($output);
+	}
+	// ------------------------item--------------------------------------------
 
 }
