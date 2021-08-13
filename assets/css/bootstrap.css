@@ -10837,4 +10837,17 @@ textarea.form-control-lg {
 ul li a{
   cursor: pointer !important;
 }
+select::-ms-expand {
+  display: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* table tbody tr td:nth-child(2) {
+  text-align: right !important;
+}
+#trasactTable  tr td:nth-child(2){ text-align: right !important; } */
 /*# sourceMappingURL=bootstrap.css.map */
